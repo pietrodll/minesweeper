@@ -7,7 +7,8 @@ let game = new GameGrid([1, 1], 1);
 
 interface GridReducerAction {
   reset?: GameGridElement[];
-  flag?: [number, number]
+  flag?: [number, number];
+  win?: boolean;
 }
 
 const reducer: React.Reducer<GameGridElement[], GridReducerAction> = (prevGrid, action) => {
@@ -15,8 +16,12 @@ const reducer: React.Reducer<GameGridElement[], GridReducerAction> = (prevGrid, 
     return action.reset;
   }
   if (action.flag) {
-    prevGrid[action.flag[0]] = action.flag[1];
-    return prevGrid;
+    const grid = [...prevGrid];
+    grid[action.flag[0]] = action.flag[1];
+    return grid;
+  }
+  if (action.win) {
+    return new Array(prevGrid.length).fill(GameGridElement.Displayed);
   }
   return prevGrid;
 }
@@ -42,7 +47,8 @@ const useGame = (size: [number, number], nBombs: number) => {
     const { discovered } = game.discover(i, j);
     setToDiscover(initialToDiscover - discovered)
     modifGameGrid({ reset: game.getFlatGameGrid() });
-    if (toDiscover === nBombs) {
+    if (toDiscover <= nBombs) {
+      modifGameGrid({ win: true });
       setWin(true);
     }
   };
