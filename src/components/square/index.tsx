@@ -1,9 +1,13 @@
 import React from 'react';
+
+// Styles
 import styles from './square.style';
-// import { squareSize } from '../../styles/dimensions';
+import { lightGrey, darkRed } from '../../styles/colors';
+import { squareSize } from '../../styles/dimensions';
 
 import { TouchableOpacity, Text, View } from 'react-native';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import BombIcon from '../../../assets/icons/bomb-solid.svg';
+import FlagIcon from '../../../assets/icons/flag-solid.svg';
 
 import { GameGridElement } from '../../models/GameGrid';
 
@@ -34,11 +38,9 @@ const Square: React.FC<SquareProps> = ({
       {gameState === GameGridElement.Hidden || num === 0 ? (
         <Text />
       ) : gameState === GameGridElement.Flag ? (
-        // <Icon name="flag" size={(size || squareSize) - 10} color="red" />
-        <Text style={styles.squareText}>F</Text>
+        <FlagIcon height={(size || squareSize) - 10} width={(size || squareSize) - 10} fill={lightGrey} />
       ) : num === Infinity ? (
-        // <Icon name="bomb" size={(size || squareSize) - 10} color="red" />
-        <Text style={styles.squareText}>B</Text>
+        <BombIcon height={(size || squareSize) - 10} width={(size || squareSize) - 10} fill={darkRed} />
       ) : (
         <Text style={styles.squareText}>{num}</Text>
       )}

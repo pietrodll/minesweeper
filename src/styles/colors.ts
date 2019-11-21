@@ -1,6 +1,8 @@
-export const closed = '#2244ee';
+export const darkBlue = '#2244ee';
 
-export const open = '#cccccc';
+export const lightGrey = '#cccccc';
+
+export const darkRed = '#cc0044';
 
 export const popupBackground = '#eeeeee';
 
