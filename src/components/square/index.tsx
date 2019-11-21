@@ -38,9 +38,17 @@ const Square: React.FC<SquareProps> = ({
       {gameState === GameGridElement.Hidden || num === 0 ? (
         <Text />
       ) : gameState === GameGridElement.Flag ? (
-        <FlagIcon height={(size || squareSize) - 10} width={(size || squareSize) - 10} fill={lightGrey} />
+        <FlagIcon
+          height={(size || squareSize) - 10}
+          width={(size || squareSize) - 10}
+          fill={lightGrey}
+        />
       ) : num === Infinity ? (
-        <BombIcon height={(size || squareSize) - 10} width={(size || squareSize) - 10} fill={darkRed} />
+        <BombIcon
+          height={(size || squareSize) - 10}
+          width={(size || squareSize) - 10}
+          fill={darkRed}
+        />
       ) : (
         <Text style={styles.squareText}>{num}</Text>
       )}

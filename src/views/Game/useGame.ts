@@ -27,25 +27,25 @@ const reducer: React.Reducer<GameGridElement[], GridReducerAction> = (prevGrid, 
 }
 
 const useGame = (size: [number, number], nBombs: number) => {
-  const initialToDiscover = size[0] * size[1] - nBombs;
 
   useEffect(() => {
     game = new GameGrid(size, nBombs);
     modifGameGrid({ reset: game.getFlatGameGrid() });
+    setToDiscover(size[0] * size[1] - nBombs);
   }, [size, nBombs]);
 
   const flatGrid = game.getFlatGrid();
   const [flatGameGrid, modifGameGrid] = useReducer(reducer, []);
   const [win, setWin] = useState(false);
   const [lose, setLose] = useState(false);
-  const [toDiscover, setToDiscover] = useState(initialToDiscover);
+  const [toDiscover, setToDiscover] = useState(Infinity);
 
   const handleSquarePress = (i: number, j: number) => {
     if (game.isBomb(i, j)) {
       setLose(true);
     }
     const { discovered } = game.discover(i, j);
-    setToDiscover(initialToDiscover - discovered)
+    setToDiscover(size[0] * size[1] - nBombs - discovered)
     modifGameGrid({ reset: game.getFlatGameGrid() });
     if (toDiscover <= nBombs) {
       modifGameGrid({ win: true });
@@ -61,7 +61,7 @@ const useGame = (size: [number, number], nBombs: number) => {
   const handleRestart = () => {
     game = new GameGrid(size, nBombs);
     modifGameGrid({ reset: game.getFlatGameGrid() });
-    setToDiscover(initialToDiscover);
+    setToDiscover(size[0] * size[1] - nBombs);
     setWin(false);
     setLose(false);
   };
