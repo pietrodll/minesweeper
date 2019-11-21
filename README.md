@@ -34,4 +34,4 @@ For iOS, I tested the app on the iOS simulator (iPhone 11) and on my personal sm
 
 For Android, I used the Android emulator.
 
-Before building the app, I ran unit tests for the components and the views in order to check errors.
+Before building the app, I ran unit tests for the components in order to check errors.
