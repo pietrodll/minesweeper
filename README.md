@@ -14,7 +14,12 @@ To setup the project, I used ``npx react-native init`` with a TypeScript templat
 
 I followed a model-view-controller design pattern.
 
-The models are two classes, ``Grid`` and ``GameGrid`` (which extends grid) which represents the game grid. They contains all the algorithmic part of the app.
+There are three views:
+- Home: landing page of the app, allows to choose the difficulty level or to read the help.
+- Game: the page to play the game
+- Help: displays a few paragraphs to explain how to play
+
+The models are two classes, ``Grid`` and ``GameGrid`` (extends ``Grid``) which represent the game grid. They contain all the algorithmic part of the app.
 
 There are two controllers in the app. One is a stack navigator, created with the module ``react-navigation``. It controls the display of the pages.
 
