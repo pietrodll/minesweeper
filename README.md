@@ -10,6 +10,8 @@ The application implements the minesweeper game in three difficulty levels, whic
 
 ## Code architecture
 
+To setup the project, I used ``npx react-native init`` with a TypeScript template.
+
 I followed a model-view-controller design pattern.
 
 The models are two classes, ``Grid`` and ``GameGrid`` (which extends grid) which represents the game grid. They contains all the algorithmic part of the app.
