@@ -2,5 +2,7 @@
 
 Freshplanet coding challenge
 
-## Code architecture
+## Introduction
+
+This is the project I made as a coding take-home assignment for FreshPlanet. 
 
