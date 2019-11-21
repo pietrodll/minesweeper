@@ -34,6 +34,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/__tests__/__mocks__/svgMock.js"
+    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -41,6 +44,9 @@
       "jsx",
       "json",
       "node"
+    ],
+    "testMatch": [
+      "**/__tests__/components/*.test.ts(x)"
     ]
   }
 }
